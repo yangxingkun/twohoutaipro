@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>美文分享</title>
+	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="all" />
+</head>
+<script src="/javascripts/jquery-1.8.2.min.js"></script>
+<body>
+<!-- Header -->
+<div id="header">
+	<div class="shell">
+		<!-- Logo + Top Nav -->
+		<div id="top">
+			<h1><a href="#">美文分享管理系统</a></h1>
+			<% if(name){ %>
+				<div id="top-navigation">
+					欢迎： <a href="#"><strong><%-   name%></strong></a>
+					<span>|</span>
+					<a href="/relogin">退出</a>
+	
+				</div>
+				<%}else{%>
+					<div id="top-navigation">
+						<a href="/login"><strong>未登录？请您登录</strong></a>
+						
+						<span>|</span>
+						<a href="#">不能发布文章</a>
+		
+					</div>
+			<%}%>
+		</div>
+		<!-- End Logo + Top Nav -->
+		
+		<!-- Main Nav -->
+		<div id="navigation">
+			<ul>
+			    <li><a href="/" class="active"><span>首页</span></a></li>
+			    <li><a href="/detail"><span>文章详情</span></a></li>
+			    <li><a href="/usermange"><span>用户管理</span></a></li>
+			    <li><a href="/picture"><span>照片墙</span></a></li>
+			    <li><a href="#"><span>产品订购</span></a></li>
+			    <li><a href="#"><span>服务</span></a></li>
+			</ul>
+		</div>
+		<!-- End Main Nav -->
+	</div>
+</div>
+<!-- End Header -->
+
+<!-- Container -->
+<div id="container">
+	<div class="shell">
+		
+		<!-- Small Nav -->
+		<div class="small-nav">
+			<a href="/">首页</a>
+			<span>&gt;</span>
+			当前文章
+		</div>
+		<!-- End Small Nav -->
+		
+		<!-- Message OK -->		
+		<div class="msg msg-ok" style="display:none">
+			<p><strong>上传成功</strong></p>
+			<a href="#" class="close">关闭</a>
+		</div>
+		<!-- End Message OK -->		
+		
+		<!-- Message Error -->
+		<div class="msg msg-error" style="display:none">
+			<p><strong>上传失败</strong></p>
+			<a href="#" class="close">关闭</a>
+		</div>
+		<!-- End Message Error -->
+		<br />
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			
+			<!-- Content -->
+			<div id="content">
+				
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2 class="left">目前文章</h2>
+						<div class="right">
+							
+								<form action="/search" method="get">
+									<label>搜索文章标题</label>
+									<input type="text" class="field small-field" name="title" />
+									<input type="submit" class="button" value="搜索" id="searchfind" />
+								</form>
+						
+						</div>
+					</div>
+					<!-- End Box Head -->	
+
+					<!-- Table -->
+					
+					<div class="table">
+							<% if(name){%>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<th width="13">
+									<input type="checkbox" class="checkbox" />
+								</th>
+								<th>标题</th>
+								<th>日期</th>
+								<th>作者</th>
+								<th width="110" class="ac">添加/修改</th>
+						
+							</tr>
+                             <% data.map(function(item,i){%>
+                                <tr>
+                                        <td>
+                                            <input type="checkbox" class="checkbox" />
+                                        </td>
+                                        <td><h3><a href="/detail?id=<%= item._id %>"><%- item.title %></a></h3></td>
+                                        <td><%- item.riqi%></td>
+                                        <td><a href="#"><%- name%></a></td>
+                                        <td>
+                                            <a href="#" class="ico del" data-id="<%- item._id %>" >删除</a>
+                                            <a href="/update?id=<%= item._id %>" class="ico edit" >编辑</a>
+                                        </td>
+                                </tr>
+
+                                <% }) %>
+
+
+
+
+							
+							
+						</table>
+						
+						
+						<!-- Pagging -->
+						<div class="pagging">
+							<div class="left">总共<%- count%>条数据</div>
+							<div class="right">
+								<a href="/?pageNo=<%- pageNo<=1?1:parseInt(pageNo)-1 %>">上一页</a>
+
+								<% if(page>4){ %>
+									<a href="/?pageNo=1">1</a>
+									<a href="/?pageNo=2">2</a>
+									<span>...</span>
+									<a href="/?pageNo=<%- page-1 %>"><%- page-1 %></a>
+									<a href="/?pageNo=<%- page %>"><%- page %></a>
+								  <% }else{ %>
+									<% for(let i=0;i<page;i++){ %>
+									  <a href="/?pageNo=<%- i+1 %>"><%- i+1 %></a>
+									<% } %>
+								  <% } %>
+
+								<a href="/?pageNo=<%- pageNo>=page?page:parseInt(pageNo)+1 %>">下一页</a>
+								<a href="#">查看全部</a>
+							</div>
+						</div>
+						<%}%>
+						<!-- End Pagging -->
+						
+					</div>
+					<!-- Table -->
+					
+				</div>
+				<!-- End Box -->
+				
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<%if(name){%>
+						<div class="box-head">
+								<h2>添加新文章</h2>
+						</div>
+						
+						<%}else{%>
+							<div class="box-head">
+									<h2 onclick="location.href='/login'" style="color: seagreen;cursor:pointer">添加新文章请您登录</h2>
+							</div>
+						<%}%>
+
+
+			
+					<!-- End Box Head -->
+					<% if(name){ %>
+						<div>
+								<!-- Form -->
+								<form action="/users/product" id="former" method="post" enctype="multipart/form-data">
+										<p>
+											<span class="req">最多100个字符</span>
+											<label>文章标题<span>(必选项)</span></label>
+											<input type="text" class="field size1" id="title" name="title"/>
+										</p>
+
+										<p>
+												<span class="req">最多100个字符</span>
+												<label>图片上传<span>(必选项)</span></label>
+												<input type="file" class="field size1" id="proimg" name="img" placeholder="请输入美图"/>
+										</p>
+
+
+										<p class="inline-field">
+											<label>日期</label>
+											<input type="text" class="field size3" id="riqi" name="riqi" />
+
+										</p>
+										
+										<p>
+											<span class="req">最多100个字符(多少字都可以的)</span>
+											<label>内容 <span>(必填项)</span></label>
+											<textarea class="field size1" rows="10" cols="30" id="content1" name="content1"></textarea>
+										</p>	
+									
+								<!-- End Form -->
+								
+								<!-- Form Buttons -->
+								<div class="buttons">
+									<input type="button" class="button" value="预览" />
+									<input type="submit" class="button" id="btn" value="提交" />
+								</div>
+							</form>
+								<!-- End Form Buttons -->
+							</div>
+						<%}%>
+						
+				</div>
+				<!-- End Box -->
+
+			</div>
+			<!-- End Content -->
+			
+			<!-- Sidebar -->
+			<% if(name){%>
+			<div id="sidebar">
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>管理</h2>
+					</div>
+					<!-- End Box Head-->
+					
+					<div class="box-content">
+						<a href="#" class="add-button"><span>添加新的文章</span></a>
+						<div class="cl">&nbsp;</div>
+						
+						<p class="select-all"><input type="checkbox" class="checkbox" /><label>选择所有</label></p>
+						<p><a href="#">删除所选</a></p>
+						
+						<!-- Sort -->
+						<div class="sort">
+							<label>排序方式</label>
+							<select class="field">
+								<option value="">标题</option>
+							</select>
+							<select class="field">
+								<option value="">日期</option>
+							</select>
+							<select class="field">
+								<option value="">作者</option>
+							</select>
+						</div>
+						<!-- End Sort -->
+					</div>
+				</div>
+				<!-- End Box -->
+			</div>
+		
+			<!-- End Sidebar -->
+			<div class="cl">&nbsp;</div>			
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
+<div id="footer">
+	<div class="shell">
+		<span class="left">&copy;邢鲲文化</span>
+	</div>
+</div>
+<%}else{%>
+	<p class="inline-field">
+		
+			<input type="text" class="field size3" id="riqi" name="riqi" />
+
+	</p>
+
+<%} %>
+</body>
+<script src="/javascripts/public.js"></script>
+<script type="text/javascript">
+
+</script>
+</html>

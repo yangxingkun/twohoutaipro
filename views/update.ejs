@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>美文分享</title>
+	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="all" />
+</head>
+<script src="/javascripts/jquery-1.8.2.min.js"></script>
+<body>
+<!-- Header -->
+<div id="header">
+	<div class="shell">
+		<!-- Logo + Top Nav -->
+		<div id="top">
+			<h1><a href="#">美文分享管理系统</a></h1>
+			<% if(name){ %>
+				<div id="top-navigation">
+					欢迎： <a href="#"><strong><%-   name%></strong></a>
+					<span>|</span>
+					<a href="/relogin">退出</a>
+	
+				</div>
+				<%}else{%>
+					<div id="top-navigation">
+						<a href="/login"><strong>未登录？请您登录</strong></a>
+						
+						<span>|</span>
+						<a href="#">不能发布文章</a>
+		
+					</div>
+			<%}%>
+		</div>
+		<!-- End Logo + Top Nav -->
+		
+		<!-- Main Nav -->
+		<div id="navigation">
+			<ul>
+				<li><a href="#" class="active"><span>首页</span></a></li>
+			    <li><a href="#" class="active"><span>修改</span></a></li>
+			   
+			</ul>
+		</div>
+		<!-- End Main Nav -->
+	</div>
+</div>
+<!-- End Header -->
+
+<!-- Container -->
+<div id="container">
+	<div class="shell">
+		
+		<!-- Small Nav -->
+		<div class="small-nav">
+			<a href="#">首页</a>
+			<span>&gt;</span>
+			修改当前文章
+		</div>
+		<!-- End Small Nav -->
+		
+		<!-- Message OK -->		
+		<div class="msg msg-ok" style="display:none">
+			<p><strong>修改成功</strong></p>
+			<a href="#" class="close">关闭</a>
+		</div>
+		<!-- End Message OK -->		
+		
+		<!-- Message Error -->
+		<div class="msg msg-error" style="display:none">
+			<p><strong>修改失败</strong></p>
+			<a href="#" class="close">关闭</a>
+		</div>
+		<!-- End Message Error -->
+		<br />
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			
+			<!-- Content -->
+			<div id="content">
+				
+		
+
+					
+						
+						
+					
+						
+			</div>
+					<!-- Table -->
+					
+				</div>
+				<!-- End Box -->
+				
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>修改文章</h2>
+					</div>
+					<!-- End Box Head -->
+					
+					
+						<div>
+						<!-- Form -->
+						<div id="former">
+								<p>
+									<span class="req">最多100个字符</span>
+									<label>文章标题<span>(必选项)</span></label>
+									<input type="text" class="field size1" id="title"/>
+								</p>	
+								<p class="inline-field">
+										<label>日期</label>
+										<input type="text" class="field size3" id="riqi" name="riqi" />
+
+								</p>
+								
+								<p>
+									<span class="req">最多100个字符</span>
+									<label>内容 <span>(必填项)</span></label>
+									<textarea class="field size1" rows="10" cols="30" id="content1"></textarea>
+								</p>	
+						</div>
+						<!-- End Form -->
+						
+						<!-- Form Buttons -->
+						<div class="buttons">
+							<input type="button" class="button" value="取消" id="disback"/>
+							<input type="button" class="button" id="save" value="保存" />
+						</div>
+						<!-- End Form Buttons -->
+					</div>
+				</div>
+				<!-- End Box -->
+
+			</div>
+			<!-- End Content -->
+			
+			<!-- Sidebar -->
+			
+			<!-- End Sidebar -->
+			<div class="cl">&nbsp;</div>			
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
+<div id="footer">
+	<div class="shell">
+		<span class="left">&copy;邢鲲文化</span>
+	</div>
+</div>
+</body>
+<script src="/javascripts/public.js"></script>
+<script type="text/javascript">
+	
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>美文分享</title>
+	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="all" />
+</head>
+<script src="/javascripts/jquery-1.8.2.min.js"></script>
+<body>
+<!-- Header -->
+<div id="header">
+	<div class="shell">
+		<!-- Logo + Top Nav -->
+		<div id="top">
+			<h1><a href="#">美文分享管理系统</a></h1>
+			<% if(name){ %>
+				<div id="top-navigation">
+					欢迎： <a href="#"><strong><%-   name%></strong></a>
+					<span>|</span>
+					<a href="/relogin">退出</a>
+	
+				</div>
+				<%}else{%>
+					<div id="top-navigation">
+						<a href="/login"><strong>未登录？请您登录</strong></a>
+						
+						<span>|</span>
+						<a href="#">不能发布文章</a>
+		
+					</div>
+			<%}%>
+		</div>
+		<!-- End Logo + Top Nav -->
+		
+		<!-- Main Nav -->
+		<div id="navigation">
+			<ul>
+			    <li><a href="/"><span>首页</span></a></li>
+			    <li><a href="/detail" ><span>文章详情</span></a></li>
+			    <li><a href="#"><span>用户管理</span></a></li>
+			    <li><a href="/picture"class="active"><span>照片墙</span></a></li>
+			    <li><a href="#"><span>产品订购</span></a></li>
+			    <li><a href="#"><span>服务</span></a></li>
+			</ul>
+		</div>
+		<!-- End Main Nav -->
+	</div>
+</div>
+<!-- End Header -->
+
+<!-- Container -->
+<div id="container">
+        <p class="inline-field">
+                <input type="text" class="field size3" id="riqi" name="riqi" />
+        </p>
+		
+</div>
+		<!-- Main -->
+
+
+</body>
+<script src="/javascripts/public.js"></script>
+<script type="text/javascript">
+
+</script>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>美文分享</title>
+	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="all" />
+</head>
+<script src="/javascripts/jquery-1.8.2.min.js"></script>
+<body>
+<!-- Header -->
+<div id="header">
+	<div class="shell">
+		<!-- Logo + Top Nav -->
+		<div id="top">
+			<h1><a href="#">美文分享管理系统</a></h1>
+			<% if(name){ %>
+				<div id="top-navigation">
+					欢迎： <a href="#"><strong><%-   name%></strong></a>
+					<span>|</span>
+					<a href="/relogin">退出</a>
+	
+				</div>
+				<%}else{%>
+					<div id="top-navigation">
+						<a href="/login"><strong>未登录？请您登录</strong></a>
+						
+						<span>|</span>
+						<a href="#">不能发布文章</a>
+		
+					</div>
+			<%}%>
+		</div>
+		<!-- End Logo + Top Nav -->
+		
+		<!-- Main Nav -->
+		<div id="navigation">
+			<ul>
+			    <li><a href="/"><span>首页</span></a></li>
+			    <li><a href="#" class="active"><span>文章详情</span></a></li>
+			    <li><a href="#"><span>用户管理</span></a></li>
+			    <li><a href="#"><span>照片墙</span></a></li>
+			    <li><a href="#"><span>产品订购</span></a></li>
+			    <li><a href="#"><span>服务</span></a></li>
+			</ul>
+		</div>
+		<!-- End Main Nav -->
+	</div>
+</div>
+<!-- End Header -->
+
+<!-- Container -->
+<div id="container">
+	<div class="shell">
+		
+		<!-- Small Nav -->
+		<div class="small-nav">
+			<a href="/">首页</a>
+			<span>&gt;</span>
+			详情页
+		</div>
+		<!-- End Small Nav -->
+		
+		<!-- Message OK -->		
+	
+		<!-- End Message OK -->		
+		
+		<!-- Message Error -->
+		
+		<!-- End Message Error -->
+		<br />
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			
+			<!-- Content -->
+			<div id="content">
+			
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+                            <h2 class="left">题目：<%= title%></h2>
+                            <div class="right">
+                                
+                                <input type="submit" class="button" value="发表日期：<%= riqi %>" />
+                            </div>
+						
+					</div>
+					<!-- End Box Head -->	
+
+					<!-- Table -->
+					
+						
+						
+						<!-- Pagging -->
+						<div class="pagging">
+							<ASide>以下是文章内容请您阅读</ASide>
+						</div>
+                        <!-- End Pagging -->
+                        <div class="table">
+								<%- include("detail1.ejs")%>
+                        </div>
+						
+					</div>
+					<!-- Table -->
+					
+				</div>
+				<!-- End Box -->
+				
+				<!-- Box -->
+				<!-- <div class="box">
+				
+					
+					
+                        大飒飒
+					
+				</div> -->
+				</div>
+				<!-- End Box -->
+
+			</div>
+			<!-- End Content -->
+			
+			<!-- Sidebar -->
+			<div id="sidebar">
+				<!-- Box -->
+				<div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+					图片展示
+					</div>
+					<!-- End Box Head-->
+					
+					<div class="box-content">
+					
+						<img src=<%= pic %> />
+						
+					</div>
+				</div>
+				<!-- End Box -->
+			</div>
+			<!-- End Sidebar -->
+			<div class="cl">&nbsp;</div>			
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
+ <!-- <div id="footer">
+	<div class="shell">
+		<span class="left">&copy;邢鲲文化</span>
+	</div>
+</div>  -->
+</body>
+<script src="/javascripts/public.js"></script>
+<script type="text/javascript">
+
+</script>
+</html>
